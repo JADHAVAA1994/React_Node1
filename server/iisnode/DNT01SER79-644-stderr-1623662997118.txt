@@ -1,0 +1,12 @@
+Application has thrown an uncaught exception and is terminated:
+Error: listen EACCES: permission denied 0.0.0.0:8000
+    at Server.setupListenHandle [as _listen2] (node:net:1289:21)
+    at listenInCluster (node:net:1354:12)
+    at Server.listen (node:net:1441:7)
+    at Function.listen (E:\REACT_07_06_2021\REACT_07_06_2021\REACTJS\WEBAPP\EMAILWEBSITE\server\node_modules\express\lib\application.js:618:24)
+    at Object.<anonymous> (E:\REACT_07_06_2021\REACT_07_06_2021\REACTJS\WEBAPP\EMAILWEBSITE\server\index.js:68:5)
+    at Module._compile (node:internal/modules/cjs/loader:1109:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)
+    at Module.load (node:internal/modules/cjs/loader:989:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:829:14)
+    at Module.require (node:internal/modules/cjs/loader:1013:19)

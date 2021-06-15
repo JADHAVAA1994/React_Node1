@@ -1,0 +1,87 @@
+<html>
+<head>
+    <title>iisnode logs</title>
+    <style type="text/css">
+        body
+        {
+            font-family: "Trebuchet MS" , Arial, Helvetica, sans-serif;
+        }
+        table
+        {
+            border-collapse: collapse;
+        }
+        td, th
+        {
+            border: 1px solid lightgray;
+            padding: 3px 7px 2px 7px;
+        }
+        th
+        {
+            text-align: left;
+            padding-top: 5px;
+            padding-bottom: 4px;
+            background-color: Gray;
+            color: #ffffff;
+        }
+        td.stderr
+        {
+            color: Red;
+        }
+    </style>
+</head>
+<body>
+    <table id="logFilesTable">
+        <tr>
+            <th>
+                Computer name
+            </th>
+            <th>
+                PID
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Created
+            </th>
+            <th>
+                Link
+            </th>
+        </tr>
+    </table>
+    <p id="lastUpdated"></p>
+    <script type="text/javascript">
+
+        // this is replaced with actual data at runtime by code in interceptor.js
+        var logFiles = [{"file":"DNT01SER79-10388-stderr-1623662999761.txt","computername":"DNT01SER79","pid":10388,"type":"stderr","created":1623662999761},{"file":"DNT01SER79-1064-stderr-1623663118493.txt","computername":"DNT01SER79","pid":1064,"type":"stderr","created":1623663118493},{"file":"DNT01SER79-10776-stderr-1623663015171.txt","computername":"DNT01SER79","pid":10776,"type":"stderr","created":1623663015171},{"file":"DNT01SER79-11088-stderr-1623663039584.txt","computername":"DNT01SER79","pid":11088,"type":"stderr","created":1623663039584},{"file":"DNT01SER79-11124-stderr-1623663014836.txt","computername":"DNT01SER79","pid":11124,"type":"stderr","created":1623663014836},{"file":"DNT01SER79-11160-stderr-1623663039924.txt","computername":"DNT01SER79","pid":11160,"type":"stderr","created":1623663039924},{"file":"DNT01SER79-11384-stderr-1623666132397.txt","computername":"DNT01SER79","pid":11384,"type":"stderr","created":1623666132397},{"file":"DNT01SER79-12016-stderr-1623667690014.txt","computername":"DNT01SER79","pid":12016,"type":"stderr","created":1623667690014},{"file":"DNT01SER79-12416-stderr-1623666848610.txt","computername":"DNT01SER79","pid":12416,"type":"stderr","created":1623666848610},{"file":"DNT01SER79-13120-stderr-1623664454406.txt","computername":"DNT01SER79","pid":13120,"type":"stderr","created":1623664454406},{"file":"DNT01SER79-2188-stderr-1623666132670.txt","computername":"DNT01SER79","pid":2188,"type":"stderr","created":1623666132670},{"file":"DNT01SER79-3612-stderr-1623667126438.txt","computername":"DNT01SER79","pid":3612,"type":"stderr","created":1623667126438},{"file":"DNT01SER79-5828-stderr-1623662999437.txt","computername":"DNT01SER79","pid":5828,"type":"stderr","created":1623662999437},{"file":"DNT01SER79-5960-stderr-1623662996811.txt","computername":"DNT01SER79","pid":5960,"type":"stderr","created":1623662996811},{"file":"DNT01SER79-6148-stderr-1623662986472.txt","computername":"DNT01SER79","pid":6148,"type":"stderr","created":1623662986472},{"file":"DNT01SER79-644-stderr-1623662997118.txt","computername":"DNT01SER79","pid":644,"type":"stderr","created":1623662997118},{"file":"DNT01SER79-6608-stderr-1623662999143.txt","computername":"DNT01SER79","pid":6608,"type":"stderr","created":1623662999143},{"file":"DNT01SER79-6720-stderr-1623663118814.txt","computername":"DNT01SER79","pid":6720,"type":"stderr","created":1623663118814},{"file":"DNT01SER79-7072-stderr-1623666132103.txt","computername":"DNT01SER79","pid":7072,"type":"stderr","created":1623666132103},{"file":"DNT01SER79-7556-stderr-1623665394712.txt","computername":"DNT01SER79","pid":7556,"type":"stderr","created":1623665394712},{"file":"DNT01SER79-7780-stderr-1623666848876.txt","computername":"DNT01SER79","pid":7780,"type":"stderr","created":1623666848876}];
+        var lastUpdated = 1623667690135;
+        var date = new Date();
+
+        date.setTime(lastUpdated);
+        document.getElementById('lastUpdated').innerHTML = 'Index was last updated ' + date;
+
+        logFiles.sort(function (a, b) {
+            return b.created - a.created;
+        });
+
+        var logFilesTable = document.getElementById("logFilesTable");
+        for (var i = 0; i < logFiles.length; i++) {
+            var logFile = logFiles[i];
+            date.setTime(logFile.created);
+            var row = logFilesTable.insertRow(-1);
+            var computerNameCell = row.insertCell(0);
+            var pidCell = row.insertCell(1);
+            var typeCell = row.insertCell(2);
+            var dateCell = row.insertCell(3);
+            var logCell = row.insertCell(4);
+            computerNameCell.innerHTML = logFile.computername;
+            pidCell.innerHTML = logFile.pid.toString();
+            typeCell.innerHTML = logFile.type;
+            typeCell.setAttribute('class', logFile.type);
+            dateCell.innerHTML = date.toString();
+            logCell.innerHTML = '<a href="' + logFile.file + '">log</a>';
+        };
+
+    </script>
+</body>
+</html>
